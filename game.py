@@ -12,9 +12,15 @@ from util.settings import SETTINGS
 
 
 class Game:
-    def __init__(self, field_height=25, field_width=50):
+    def __init__(self, field_height=SETTINGS["field_rows"], field_width=SETTINGS["field_cols"]):
         self.field = GameField(field_width, field_height)
         self.should_stop = False
+
+        # TODO: Spawn player
+
+        # Player currently spawns at the middle of the last row
+        self.player = PlayerObject(self.field.height - 1, (self.field.width // 2) - 1, "#")
+        self.place_item(self.player)
 
     def get_field(self):
         return self.field.get_matrix()
@@ -24,6 +30,9 @@ class Game:
 
     def move_item(self,item,row,col):
         self.field.move_item(item,row,col)
+
+    def place_item(self,item):
+        return self.field.place_item(item)
 
     def game_loop(self,thread_name, delay):
         while not self.should_stop:
@@ -41,5 +50,5 @@ if __name__ == "__main__":
     game = Game(SETTINGS["field_rows"], SETTINGS["field_cols"])
     game.start_game()
 
-    # otherwise it just quits :(
+    # otherwise it just runs and closes :(
     c = input("Type something to quit.")

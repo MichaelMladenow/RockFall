@@ -16,6 +16,10 @@ class Game:
         self.field = GameField(field_width, field_height)
         self.should_stop = False
 
+        # TODO: Export into a class
+        # TODO: Limit inputs in queue to prevent overflow/input lag
+        self.input_queue = []
+
         # TODO: Spawn player
 
         # Player currently spawns at the middle of the last row
@@ -34,6 +38,16 @@ class Game:
     def place_item(self,item):
         return self.field.place_item(item)
 
+    def input_loop(self,thread_name, delay):
+        # TODO: Run input loop
+        pass
+
+        while not self.should_stop:
+            break
+            # TODO: Capture input from the input loop
+            # And if there's room add it to the input
+            # queue
+
     def game_loop(self,thread_name, delay):
         while not self.should_stop:
             self.field.tick()
@@ -44,6 +58,7 @@ class Game:
 
     def start_game(self):
         _thread.start_new_thread(self.game_loop,("GameLoop-Thread", SETTINGS["game_speed"]))
+        _thread.start_new_thread(self.input_loop,("InputLoop-Thread", SETTINGS["input_speed"]))
         # TODO: Start input listener thread
 
 if __name__ == "__main__":

@@ -3,7 +3,8 @@
 """
 
 SETTINGS = {
-    "game_speed": 0.1,               # Duration of intevals between field update (lower = faster)
+    "game_speed": 0.1,               # Duration of intevals between field update (lower = more often)
+    "input_speed": 0.1,              # Duration of intevals between input capture (lower = more often)
     "field_rows": 25,                # Field size: Height
     "field_cols": 50,                # Field size: Width
     "tick_rock_move_rows": 1,        # How many rows does each rock move on game loop tick

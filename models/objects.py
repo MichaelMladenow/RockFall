@@ -13,7 +13,7 @@ class GameObject:
         pass
 
     def hit_wall(self, wall):
-        print("%s hit the %s wall." % (str(self), wall))
+        pass#print("%s hit the %s wall." % (str(self), wall))
 
     def position_string(self):
         return "Left: %d, Right: %d" % (self.row, self.col)

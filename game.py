@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #==== MISC MODULES ==========================
-import _thread, time
+import _thread, time, msvcrt
 
 #==== GAME MODULES ==========================
 from models.objects import *
@@ -42,7 +42,22 @@ class Game:
         pass
 
         while not self.should_stop:
-            break
+            kp = str(msvcrt.getch())
+            if kp:
+                raise Exception(kp, ord(kp))
+                """
+                pressed_key = ord(kp)
+                if pressed_key == 19424:
+                    # Left arrow key
+                    # TODO: Move player left
+                    print("LEFT!")
+                    pass
+                elif pressed_key == 19936:
+                    # Right arrow key
+                    # TODO: Move player right
+                    print("RIGHT!")
+                    pass
+                """
             # TODO: Capture input from the input loop
             # And if there's room add it to the input
             # queue

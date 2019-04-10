@@ -20,9 +20,8 @@ class Game:
         # TODO: Limit inputs in queue to prevent overflow/input lag
         self.input_queue = []
 
-        # TODO: Spawn player
-
         # Player currently spawns at the middle of the last row
+        # TODO: Export spawn position(function of position) into SETTINGS
         self.player = PlayerObject(self.field.height - 1, (self.field.width // 2) - 1, "#")
         self.place_item(self.player)
 
